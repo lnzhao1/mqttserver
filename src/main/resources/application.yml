@@ -1,0 +1,35 @@
+server:
+  port: 80
+
+logging:
+  config: classpath:config/logback-spring.xml
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 40MB
+      max-request-size: 100MB
+  application:
+    name: liziyun
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.56.105:3306/liziyundb?characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 20
+      connection-test-query: SELECT 1 FROM DUAL
+      connection-timeout: 600
+      idleTimeout: 30000
+      maxLifetime: 40000
+      validation-timeout: 300
+      login-timeout: 10
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    generate-ddl: true
